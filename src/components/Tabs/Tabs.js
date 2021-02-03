@@ -8,17 +8,19 @@ function Tabs(props) {
   const { activeIndex, panes, onTabChange } = props;
 
   const tabsItem = panes.map((tabKey, index) => (
-    <div className='tab col-sm' key={index}>
-      tab {tabKey}
+    <div
+      className='tab col-sm'
+      key={index}
+      onClick={(event) => onTabChange(index, event)}
+      style={{
+        backgroundColor: `${index === activeIndex ? 'orange' : 'aqua'}`,
+      }}
+    >
+      tab {tabKey + 1}
     </div>
   ));
 
-  // return <div className='tabsContainer'>{tabsItem}</div>;
-  return (
-    <div className='tabsContainer'>
-      <div className='row'>{tabsItem}</div>
-    </div>
-  );
+  return <div className='tabsContainer'>{tabsItem}</div>;
 }
 
 export default Tabs;
